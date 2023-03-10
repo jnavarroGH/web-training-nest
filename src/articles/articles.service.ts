@@ -8,7 +8,8 @@ export class ArticlesService {
   constructor(private prisma: PrismaService) {}
 
   create(createArticleDto: CreateArticleDto) {
-    return 'This action adds a new article';
+    // return 'This action adds a new article';
+    return this.prisma.article.create({ data: createArticleDto });
   }
 
   findAll() {
@@ -26,7 +27,11 @@ export class ArticlesService {
   }
 
   update(id: number, updateArticleDto: UpdateArticleDto) {
-    return `This action updates a #${id} article`;
+    // return `This action updates a #${id} article`;
+    return this.prisma.article.update({
+      where: { id },
+      data: updateArticleDto,
+    });
   }
 
   remove(id: number) {
