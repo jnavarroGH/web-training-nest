@@ -6,8 +6,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    // "target": "es2017",
-    "target": "es6",
+    "target": "es2017",
+    // "target": "ES6",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
@@ -19,6 +19,5 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
-  },
-  "exclude": ["node_modules"]
+  }
 }

@@ -1,12 +1,20 @@
 service: web-training-nest
 
 plugins:
-  - '@hewmen/serverless-plugin-typescript'  
+  - '@hewmen/serverless-plugin-typescript'
   - serverless-plugin-optimize
   - serverless-offline
+  # - serverless-localstack
   # - serverless-plugin-warmup
 
-# custom:
+custom:
+  localstack:
+    stages:
+      - local
+    lambda:
+      mountCode: True
+    docker:
+      sudo: False
 #   # Enable warmup on all functions (only for production and staging)
 #   warmup:      
 #       - production
@@ -21,8 +29,16 @@ package:
 
 functions:
   main:
-    handler: src/main.handler
+    # handler: src/main.handler
+    handler: src/serverless.handler
     events:
       - http:
-          method: any
-          path: /{proxy+}
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
+    # events:
+    #   - http:
+    #       method: any
+    #       path: /{proxy+}
